@@ -1,4 +1,7 @@
-Temporary will be removed soon
+# Temporary will be removed soon
+
+temporary link: https://www.tecmint.com/move-home-directory-to-new-partition-disk-in-linux/?fbclid=IwAR3laiReJut37uxiC2LiroOfCQg_XqZW0aIyMPymNyfZGslswCEMaYYN4Zw
+
 
 Linux Commands
 
