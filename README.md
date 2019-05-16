@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +33,7 @@ var max = 100;
 	     // create cells in row
              for (var c = 0; c < cellsInRow; c++) {
                 var cell = document.createElement("td");
-								//cell.createElement("input");
+								
 								if(c<cellsInRow-1 && r<totalRows-1){
 		getRandom = Math.floor(Math.random() * (max - min + 1)) + min;
                 var cellText = document.createTextNode(Math.floor(Math.random() * (max - min + 1)) + min);
