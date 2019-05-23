@@ -34,61 +34,7 @@ font-weight:bold;
 }
 </style>
 <script>
-var maxSum = 196;
-var numbers = [];
 
-function changeValueForCell(){
-	var table = document.getElementById("table1");
-	for (var i=0; i<8; i++) {
-		for (var j=0; j<8; j++) {
-			table.rows[i].cells[j].innerHTML = numbers[i][j];
-		}
-	}
-}
-
-function lastRowValues(){
-	for(i=0; i < 7; i++){
-		rowsum=0;
-		for(j=0; j < 7; j++){
-			rowsum += numbers[i][j];
-		}
-		numbers[i][7] = rowsum;
-	}
-	for(j=0; j < 7; j++){
-		colsum = 0;
-		for(i=0; i < 7; i++){
-			colsum += numbers[i][j];
-		}
-		numbers[7][j] = colsum;
-	}
-
-	lastsum = 0;
-	for(i=0; i < 7; i++){
-		lastsum += numbers[i][7];
-		lastsum += numbers[7][i];
-	}
-	numbers[7][7] = lastsum;
-}
-
-function changeNumbers(){
-	for(i=0; i < 7; i++){
-		numbers[i] = [];
-		for(j=0; j < 7; j++){
-			numbers[i][j] = Math.floor(Math.random()*10);
-		}
-	}
-
-	numbers[7] = [];
-	lastRowValues();
-
-	changeValueForCell();
-}
-
-function effectRowCol(row, col){
-	numbers[row][col] = Math.floor(Math.random()*10);
-	lastRowValues();
-	changeValueForCell();
-}
 </script>
 </head>
 <body>
@@ -176,7 +122,6 @@ function effectRowCol(row, col){
 		</tr>
 	</table>
 <script>
-changeNumbers();
 </script>
 </center>
 </br>
@@ -184,25 +129,74 @@ changeNumbers();
 <div id="myProgress">
   <div id="myBar">50%</div>
 </div>
+<script>
+var numbers = [];
 
+function changeValueForCell(){
+	var table = document.getElementById("table1");
+	for (var i=0; i<8; i++) {
+		for (var j=0; j<8; j++) {
+			table.rows[i].cells[j].innerHTML = numbers[i][j];
+		}
+	}
+}
+
+function lastRowValues(){
+	for(i=0; i < 7; i++){
+		rowsum=0;
+		for(j=0; j < 7; j++){
+			rowsum += numbers[i][j];
+		}
+		numbers[i][7] = rowsum;
+	}
+	for(j=0; j < 7; j++){
+		colsum = 0;
+		for(i=0; i < 7; i++){
+			colsum += numbers[i][j];
+		}
+		numbers[7][j] = colsum;
+	}
+
+	var lastsum = 0;
+	for(i=0; i < 7; i++){
+		lastsum += numbers[i][7];
+		
+	}
+	numbers[7][7] = lastsum;
+	move(lastsum);
+	
+}
+
+function changeNumbers(){
+	for(i=0; i < 7; i++){
+		numbers[i] = [];
+		for(j=0; j < 7; j++){
+			numbers[i][j] = Math.floor(Math.random()*10);
+		}
+	}
+
+	numbers[7] = [];
+	lastRowValues();
+
+	changeValueForCell();
+}
+
+function effectRowCol(row, col){
+	numbers[row][col] = Math.floor(Math.random()*10);
+	lastRowValues();
+	changeValueForCell();
+}
+function move(lastsum) {
+  var elem = document.getElementById("myBar");   
+ 
+      elem.style.width = (lastsum/490)*100 +'%'; 
+      elem.innerHTML = lastsum * 1  ;
+   
+
+   }
+   changeNumbers();</script>
 <br>
 <button onclick="move()">Click Me</button> 
 
-<script>
-function move() {
-  var elem = document.getElementById("myBar");   
-  var width = 10;
-  var id = setInterval(frame, 10);
-  function frame() {
-    if (width >= 100) {
-      clearInterval(id);
-    } else {
-      width++; 
-      elem.style.width = width + '%'; 
-      elem.innerHTML = width * 1  + '%';
-    }
-  }
-}
-</script>
 </body>
 </html>
