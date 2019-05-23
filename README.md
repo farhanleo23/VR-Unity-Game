@@ -3,10 +3,24 @@
 <title>JavaScript</title>
 <h1>Question 1 </h1>
 <style>
+#myProgress {
+  width: 100% = 490;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 10%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+
 table, th, td {
   background-color:black;
   border: 5px ;
-  border-color:brown;
+  border-color:green;
   border-style: groove;
   border-radius:5px;
 }
@@ -20,6 +34,7 @@ font-weight:bold;
 }
 </style>
 <script>
+var maxSum = 196;
 var numbers = [];
 
 function changeValueForCell(){
@@ -162,6 +177,32 @@ function effectRowCol(row, col){
 	</table>
 <script>
 changeNumbers();
+</script>
+</center>
+</br>
+<h3> progress bar </h3>
+<div id="myProgress">
+  <div id="myBar">50%</div>
+</div>
+
+<br>
+<button onclick="move()">Click Me</button> 
+
+<script>
+function move() {
+  var elem = document.getElementById("myBar");   
+  var width = 10;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++; 
+      elem.style.width = width + '%'; 
+      elem.innerHTML = width * 1  + '%';
+    }
+  }
+}
 </script>
 </body>
 </html>
